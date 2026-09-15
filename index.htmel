@@ -1,0 +1,200 @@
+ <!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>خدمات أولاد عليو</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      margin: 0;
+      background: #f5f7fa;
+      color: #222;
+    }
+
+    header {
+      background: #087f5b;
+      color: white;
+      text-align: center;
+      padding: 30px 15px;
+    }
+
+    header h1 {
+      margin: 0 0 10px;
+      font-size: 30px;
+    }
+
+    header p {
+      margin: 0;
+      font-size: 17px;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 25px auto;
+      padding: 0 15px;
+    }
+
+    .search {
+      width: 100%;
+      padding: 15px;
+      border: 1px solid #ddd;
+      border-radius: 12px;
+      font-size: 16px;
+      margin-bottom: 25px;
+    }
+
+    .services {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 15px;
+    }
+
+    .card {
+      background: white;
+      padding: 25px 15px;
+      border-radius: 15px;
+      text-align: center;
+      box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+    }
+
+    .icon {
+      font-size: 42px;
+      margin-bottom: 10px;
+    }
+
+    .card h2 {
+      margin: 10px 0;
+      font-size: 20px;
+    }
+
+    .card p {
+      color: #666;
+    }
+
+    .button {
+      display: inline-block;
+      background: #087f5b;
+      color: white;
+      text-decoration: none;
+      padding: 10px 18px;
+      border-radius: 8px;
+      margin-top: 10px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 25px;
+      margin-top: 30px;
+      background: #222;
+      color: white;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <h1>📍 خدمات أولاد عليو</h1>
+    <p>دليل الخدمات الموجودة في المنطقة</p>
+  </header>
+
+  <div class="container">
+
+    <input
+      class="search"
+      type="text"
+      placeholder="🔎 ابحث عن خدمة..."
+      onkeyup="searchServices()"
+      id="search"
+    >
+
+    <div class="services" id="services">
+
+      <div class="card">
+        <div class="icon">💊</div>
+        <h2>الصيدليات</h2>
+        <p>اعثر على الصيدليات وأرقام التواصل</p>
+        <a class="button" href="#">عرض الصيدليات</a>
+      </div>
+
+      <div class="card">
+        <div class="icon">🏥</div>
+        <h2>المستشفيات</h2>
+        <p>المستشفيات والخدمات الطبية</p>
+        <a class="button" href="#">عرض المستشفيات</a>
+      </div>
+
+      <div class="card">
+        <div class="icon">👨‍⚕️</div>
+        <h2>الدكاترة والعيادات</h2>
+        <p>الأطباء والتخصصات والعيادات</p>
+        <a class="button" href="#">عرض الدكاترة</a>
+      </div>
+
+      <div class="card">
+        <div class="icon">🚑</div>
+        <h2>الطوارئ</h2>
+        <p>أرقام وخدمات الطوارئ</p>
+        <a class="button" href="#">أرقام الطوارئ</a>
+      </div>
+
+      <div class="card">
+        <div class="icon">🛺</div>
+        <h2>التكاتك والمواصلات</h2>
+        <p>أرقام السائقين ووسائل المواصلات</p>
+        <a class="button" href="#">عرض المواصلات</a>
+      </div>
+
+      <div class="card">
+        <div class="icon">🔧</div>
+        <h2>الصيانة والحرفيين</h2>
+        <p>كهربائي، سباك، نجار وفنيين</p>
+        <a class="button" href="#">عرض الخدمات</a>
+      </div>
+
+      <div class="card">
+        <div class="icon">🛒</div>
+        <h2>المحلات</h2>
+        <p>المحلات والمتاجر والخدمات</p>
+        <a class="button" href="#">عرض المحلات</a>
+      </div>
+
+      <div class="card">
+        <div class="icon">📞</div>
+        <h2>أرقام مهمة</h2>
+        <p>أرقام الخدمات المهمة في المنطقة</p>
+        <a class="button" href="#">عرض الأرقام</a>
+      </div>
+
+    </div>
+  </div>
+
+  <footer>
+    © 2026 خدمات أولاد عليو
+  </footer>
+
+  <script>
+    function searchServices() {
+      let input = document.getElementById("search").value.toLowerCase();
+      let cards = document.querySelectorAll(".card");
+
+      cards.forEach(function(card) {
+        let text = card.innerText.toLowerCase();
+
+        if (text.includes(input)) {
+          card.style.display = "block";
+        } else {
+          card.style.display = "none";
+        }
+      });
+    }
+  </script>
+
+</body>
+</html>
