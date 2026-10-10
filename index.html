@@ -9,20 +9,12 @@
         * { box-sizing: border-box; }
         body { margin: 0; font-family: Tahoma, Arial, sans-serif; background: #f3f6fa; color: #183047; }
         
-        /* Header & Elantra Style Logo */
         header { background: linear-gradient(135deg, #087f70, #075b70); color: white; text-align: center; padding: 35px 15px 25px; border-radius: 0 0 25px 25px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
         
         .brand-logo { 
-            display: inline-flex; 
-            align-items: center; 
-            justify-content: center; 
-            width: 75px; 
-            height: 75px; 
-            border: 3px solid rgba(255, 255, 255, 0.85); 
-            border-radius: 50%; 
-            font-size: 28px; 
-            font-weight: bold; 
-            color: #ffffff; 
+            display: inline-flex; align-items: center; justify-content: center; 
+            width: 75px; height: 75px; border: 3px solid rgba(255, 255, 255, 0.85); 
+            border-radius: 50%; font-size: 28px; color: #ffffff; 
             background: rgba(255, 255, 255, 0.1); 
             box-shadow: inset 0 0 10px rgba(255,255,255,0.2), 0 4px 8px rgba(0,0,0,0.15);
             margin-bottom: 12px;
@@ -32,34 +24,47 @@
         header p { margin: 0 0 12px; font-size: 14px; opacity: 0.9; }
         
         .dev-badge { 
-            display: inline-block; 
-            background: rgba(255, 255, 255, 0.18); 
-            padding: 5px 14px; 
-            border-radius: 20px; 
-            font-size: 12px; 
-            font-weight: bold; 
-            margin-top: 6px; 
-            direction: ltr; 
-            border: 1px solid rgba(255, 255, 255, 0.25);
+            display: inline-block; background: rgba(255, 255, 255, 0.18); 
+            padding: 5px 14px; border-radius: 20px; font-size: 12px; font-weight: bold; 
+            margin-top: 6px; direction: ltr; border: 1px solid rgba(255, 255, 255, 0.25);
         }
 
         .container { max-width: 850px; margin: auto; padding: 18px; }
+        
         .search { width: 100%; padding: 15px; border: 1px solid #d6e0e8; border-radius: 12px; font-size: 16px; margin-bottom: 18px; background: white; outline: none; transition: border-color 0.3s; }
         .search:focus { border-color: #087f70; }
+        
         h2 { font-size: 20px; margin: 22px 0 14px; }
+        
         .categories { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
-        .category { background: white; padding: 16px 5px; text-align: center; border-radius: 13px; cursor: pointer; border: 1px solid #e2eaf0; font-size: 14px; transition: all 0.2s ease; user-select: none; }
+        .category { background: white; padding: 20px 5px; text-align: center; border-radius: 13px; cursor: pointer; border: 1px solid #e2eaf0; font-size: 14px; transition: all 0.2s ease; user-select: none; box-shadow: 0 2px 4px rgba(0,0,0,0.02); }
         .category:hover { border-color: #087f70; transform: translateY(-2px); }
-        .category.active { background: #087f70; color: white; border-color: #087f70; }
-        .category span { display: block; font-size: 27px; margin-bottom: 7px; }
+        .category span { display: block; font-size: 30px; margin-bottom: 8px; }
+        
+        /* شاشات الأقسام الفرعية */
+        .sub-page { display: none; }
+        .sub-page.active { display: block; }
+        
+        .back-btn { 
+            display: inline-flex; align-items: center; gap: 5px; 
+            background: #087f70; color: white; border: none; 
+            padding: 10px 18px; border-radius: 10px; font-size: 15px; 
+            cursor: pointer; margin-bottom: 15px; font-weight: bold; 
+            transition: background 0.2s;
+        }
+        .back-btn:hover { background: #066358; }
+
         .cards { display: grid; gap: 12px; }
         .card { background: white; border-radius: 14px; padding: 17px; border: 1px solid #e1e9ef; box-shadow: 0 2px 5px rgba(0,0,0,0.02); }
         .card h3 { margin: 0 0 9px; color: #087f70; }
         .card p { margin: 7px 0; color: #526475; font-size: 14px; }
         .badge { display: inline-block; background: #e2f5ef; color: #087f70; padding: 5px 9px; border-radius: 7px; font-size: 12px; margin-bottom: 10px; }
+        
         .call { display: inline-block; background: #087f70; color: white; text-decoration: none; padding: 10px 18px; border-radius: 9px; margin-top: 10px; font-weight: bold; font-size: 14px; transition: background 0.2s; }
         .call:hover { background: #066358; }
-        .empty { text-align: center; padding: 25px; color: #687987; background: white; border-radius: 14px; }
+        
+        .empty { text-align: center; padding: 30px; color: #687987; background: white; border-radius: 14px; font-size: 15px; }
+        
         footer { text-align: center; color: #73818c; font-size: 13px; padding: 25px 10px; }
         @media (max-width: 420px) { .categories { grid-template-columns: repeat(2, 1fr); } }
     </style>
@@ -73,111 +78,144 @@
     </header>
 
     <main class="container">
-        <input id="search" class="search" type="search" placeholder="🔎 ابحث عن طبيب أو صيدلية أو محل...">
         
-        <h2>📋 أقسام الخدمات</h2>
-        <div class="categories">
-            <div class="category" data-category="أطباء ومستشفيات"><span>🏥</span>أطباء ومستشفيات</div>
-            <div class="category" data-category="صيدليات"><span>💊</span>صيدليات</div>
-            <div class="category" data-category="تحاليل وأشعة"><span>🧪</span>تحاليل وأشعة</div>
-            <div class="category" data-category="محلات"><span>🛒</span>محلات</div>
-            <div class="category" data-category="صيانة وحرف"><span>🔧</span>صيانة وحرف</div>
-            <div class="category" data-category="مطاعم"><span>🍽️</span>مطاعم</div>
-            <div class="category" data-category="مواصلات"><span>🚐</span>مواصلات</div>
-            <div class="category" data-category="أخرى"><span>📌</span>خدمات أخرى</div>
+        <!-- الصفحة الرئيسية (الأقسام) -->
+        <div id="homeView">
+            <input id="search" class="search" type="search" placeholder="🔎 ابحث عن طبيب أو صيدلية أو محل...">
+            
+            <h2>📋 أقسام الخدمات</h2>
+            <div class="categories">
+                <div class="category" onclick="openCategory('أطباء ومستشفيات')"><span>🏥</span>أطباء ومستشفيات</div>
+                <div class="category" onclick="openCategory('صيدليات')"><span>💊</span>صيدليات</div>
+                <div class="category" onclick="openCategory('تحاليل وأشعة')"><span>🧪</span>تحاليل وأشعة</div>
+                <div class="category" onclick="openCategory('محلات')"><span>🛒</span>محلات</div>
+                <div class="category" onclick="openCategory('صيانة وحرف')"><span>🔧</span>صيانة وحرف</div>
+                <div class="category" onclick="openCategory('مطاعم')"><span>🍽️</span>مطاعم</div>
+                <div class="category" onclick="openCategory('مواصلات')"><span>🚐</span>مواصلات</div>
+                <div class="category" onclick="openCategory('أخرى')"><span>📌</span>خدمات أخرى</div>
+            </div>
+
+            <h2 style="margin-top: 30px;">⭐ كل الخدمات المتاحة</h2>
+            <div id="allServices" class="cards"></div>
         </div>
 
-        <h2 id="listTitle">⭐ الخدمات</h2>
-        <div id="services" class="cards"></div>
+        <!-- صفحة القسم الفرعي (تفتح عند الضغط على أي خانة) -->
+        <div id="categoryView" class="sub-page">
+            <button class="back-btn" onclick="goHome()">⬅ العودة للرئيسية</button>
+            <h2 id="categoryTitle" style="color: #087f70; margin-bottom: 15px;"></h2>
+            <div id="categoryServices" class="cards"></div>
+        </div>
+
     </main>
 
     <footer>خدمات أولاد عليو © <span id="year"></span></footer>
 
     <script>
+        // قاعدة البيانات (تقدر تضيف وتزود براحتك)
         const services = [
             { name: "دكتور / أسامة (باطنة وعيادة شاملة)", category: "أطباء ومستشفيات", address: "شارع البحر الرئيسي", phone: "01000000000", hours: "من 5 مساءً إلى 9 مساءً" },
             { name: "صيدلية الإخلاص", category: "صيدليات", address: "بجوار الموقف القديم", phone: "01200000000", hours: "متاحة 24 ساعة (خدمة توصيل)" },
             { name: "معامل الشفاء للتحاليل الطبية", category: "تحاليل وأشعة", address: "الشارع التجاري", phone: "01100000000", hours: "من 9 صباحاً إلى 10 مساءً" },
             { name: "سوبر ماركت الخير", category: "محلات", address: "مدخل البلد", phone: "01500000000", hours: "يومياً من 8 صباحاً لـ 12 منتصف الليل" },
-            { name: "أحمد - أعمال صيانة وسباكة", category: "أولاد عليو", address: "أولاد عليو", phone: "01011111111", hours: "بالاتفاق المسبق" }
+            { name: "أحمد - أعمال صيانة وسباكة", category: "صيانة وحرف", address: "أولاد عليو", phone: "01011111111", hours: "بالاتفاق المسبق" }
         ];
 
-        const search = document.getElementById("search");
-        const servicesBox = document.getElementById("services");
-        const listTitle = document.getElementById("listTitle");
-        let selectedCategory = "";
+        const homeView = document.getElementById("homeView");
+        const categoryView = document.getElementById("categoryView");
+        const categoryTitle = document.getElementById("categoryTitle");
+        const categoryServices = document.getElementById("categoryServices");
+        const allServicesBox = document.getElementById("allServices");
+        const searchInput = document.getElementById("search");
 
-        function renderServices() {
-            const query = search.value.trim().toLowerCase();
-            const filtered = services.filter(service => {
-                const text = [service.name, service.category, service.address].join(" ").toLowerCase();
-                return text.includes(query) && (!selectedCategory || service.category === selectedCategory);
-            });
+        // عرض كل الخدمات في الرئيسية
+        function renderAllServices(filterText = "") {
+            allServicesBox.innerHTML = "";
+            const filtered = services.filter(s => 
+                s.name.toLowerCase().includes(filterText) || 
+                s.category.toLowerCase().includes(filterText) || 
+                s.address.toLowerCase().includes(filterText)
+            );
 
-            servicesBox.innerHTML = "";
             if (!filtered.length) {
-                servicesBox.innerHTML = '<div class="empty">لا توجد خدمات مطابقة للبحث حاليًا.</div>';
+                allServicesBox.innerHTML = '<div class="empty">لا توجد خدمات مطابقة للبحث.</div>';
                 return;
             }
 
             filtered.forEach(service => {
-                const card = document.createElement("article");
-                card.className = "card";
-                
-                const title = document.createElement("h3");
-                title.textContent = service.name;
-                card.appendChild(title);
-
-                const badge = document.createElement("div");
-                badge.className = "badge";
-                badge.textContent = service.category;
-                card.appendChild(badge);
-
-                const address = document.createElement("p");
-                address.textContent = "📍 العنوان: " + service.address;
-                card.appendChild(address);
-
-                const hours = document.createElement("p");
-                hours.textContent = "🕒 المواعيد: " + service.hours;
-                card.appendChild(hours);
-
-                if (service.phone) {
-                    const phone = document.createElement("p");
-                    phone.textContent = "📞 " + service.phone;
-                    card.appendChild(phone);
-
-                    const call = document.createElement("a");
-                    call.className = "call";
-                    call.href = "tel:" + service.phone;
-                    call.textContent = "اتصل الآن";
-                    card.appendChild(call);
-                }
-
-                servicesBox.appendChild(card);
+                allServicesBox.appendChild(createCard(service));
             });
         }
 
-        search.addEventListener("input", renderServices);
+        // فتح صفحة القسم المحدد
+        function openCategory(catName) {
+            homeView.style.display = "none";
+            categoryView.classList.add("active");
+            categoryTitle.textContent = "📁 قسم: " + catName;
+            
+            categoryServices.innerHTML = "";
+            const matched = services.filter(s => s.category === catName);
 
-        document.querySelectorAll(".category").forEach(button => {
-            button.addEventListener("click", () => {
-                const category = button.dataset.category;
-                if (selectedCategory === category) {
-                    selectedCategory = "";
-                    button.classList.remove("active");
-                } else {
-                    document.querySelectorAll(".category").forEach(btn => btn.classList.remove("active"));
-                    selectedCategory = category;
-                    button.classList.add("active");
-                }
-                listTitle.textContent = selectedCategory ? "الخدمات: " + selectedCategory : "⭐ الخدمات";
-                renderServices();
-                document.getElementById("listTitle").scrollIntoView({ behavior: "smooth", block: "start" });
+            if (!matched.length) {
+                categoryServices.innerHTML = '<div class="empty">لا توجد خدمات مسجلة في هذا القسم حالياً. انتظرونا قريباً!</div>';
+                return;
+            }
+
+            matched.forEach(service => {
+                categoryServices.appendChild(createCard(service));
             });
+            
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // العودة للرئيسية
+        function goHome() {
+            categoryView.classList.remove("active");
+            homeView.style.display = "block";
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // تصميم كارت الخدمة
+        function createCard(service) {
+            const card = document.createElement("article");
+            card.className = "card";
+            
+            const title = document.createElement("h3");
+            title.textContent = service.name;
+            card.appendChild(title);
+
+            const badge = document.createElement("div");
+            badge.className = "badge";
+            badge.textContent = service.category;
+            card.appendChild(badge);
+
+            const address = document.createElement("p");
+            address.textContent = "📍 العنوان: " + service.address;
+            card.appendChild(address);
+
+            const hours = document.createElement("p");
+            hours.textContent = "🕒 المواعيد: " + service.hours;
+            card.appendChild(hours);
+
+            if (service.phone) {
+                const phone = document.createElement("p");
+                phone.textContent = "📞 " + service.phone;
+                card.appendChild(phone);
+
+                const call = document.createElement("a");
+                call.className = "call";
+                call.href = "tel:" + service.phone;
+                call.textContent = "اتصل الآن";
+                card.appendChild(call);
+            }
+            return card;
+        }
+
+        searchInput.addEventListener("input", (e) => {
+            renderAllServices(e.target.value.trim().toLowerCase());
         });
 
         document.getElementById("year").textContent = new Date().getFullYear();
-        renderServices();
+        renderAllServices();
     </script>
 </body>
 </html>
