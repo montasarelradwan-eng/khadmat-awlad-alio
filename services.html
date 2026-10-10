@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>خدماتنا - خدمات أولاد علي</title>
+    <!-- ربط ملف الـ CSS (تأكد من مسار الملف حسب مجلدات مشروعك) -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #004d40;
+            --secondary-color: #00796b;
+            --accent-color: #ffb300;
+            --bg-color: #f4f6f7;
+            --text-color: #333;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        header nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 20px;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        header nav a:hover {
+            color: var(--accent-color);
+        }
+
+        .services-container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .section-title h1 {
+            color: var(--primary-color);
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .section-title p {
+            color: #666;
+            font-size: 1.1rem;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-align: center;
+            padding: 30px 20px;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            color: var(--secondary-color);
+            margin-bottom: 20px;
+        }
+
+        .service-card h3 {
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        .service-card p {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .btn-details {
+            display: inline-block;
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+
+        .btn-details:hover {
+            background-color: var(--primary-color);
+        }
+
+        footer {
+            background-color: #263238;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 60px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- شريط التنقل العلوي -->
+    <header>
+        <div class="logo">
+            <h2>خدمات أولاد علي</h2>
+        </div>
+        <nav>
+            <a href="index.html">الرئيسية</a>
+            <a href="services.html" style="color: var(--accent-color);">الخدمات</a>
+            <a href="contact.html">اتصل بنا</a>
+        </nav>
+    </header>
+
+    <!-- محتوى صفحة الخدمات -->
+    <div class="services-container">
+        <div class="section-title">
+            <h1>خدماتنا المتميزة</h1>
+            <p>نقدم لك مجموعة واسعة من الخدمات المصممة خصيصاً لتلبي احتياجاتك بأعلى جودة وسرعة</p>
+        </div>
+
+        <div class="services-grid">
+            <!-- خدمة 1 -->
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-tools"></i>
+                </div>
+                <h3>الصيانة والدعم</h3>
+                <p>خدمات صيانة شاملة ومتابعة دورية بأعلى معايير الجودة والكفاءة لضمان استمرارية العمل.</p>
+                <a href="contact.html" class="btn-details">اطلب الخدمة</a>
+            </div>
+
+            <!-- خدمة 2 -->
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-shipping-fast"></i>
+                </div>
+                <h3>التوريد والتوصيل</h3>
+                <p>توفير وتوصيل المنتجات والطلبات بأسرع وقت ممكن لأي مكان وبأسعار تنافسية.</p>
+                <a href="contact.html" class="btn-details">اطلب الخدمة</a>
+            </div>
+
+            <!-- خدمة 3 -->
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-headset"></i>
+                </div>
+                <h3>الاستشارات والدعم الفني</h3>
+                <p>فريق متخصص جاهز للإجابة على استفساراتكم وتقديم الحلول الاستشارية على مدار الساعة.</p>
+                <a href="contact.html" class="btn-details">اطلب الخدمة</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- التذييل -->
+    <footer>
+        <p>جميع الحقوق محفوظة &copy; 2026 - خدمات أولاد علي</p>
+    </footer>
+
+    <!-- ربط ملف الـ JS -->
+    <script src="js/main.js"></script>
+</body>
+</html>
