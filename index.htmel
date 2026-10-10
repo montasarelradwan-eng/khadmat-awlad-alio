@@ -30,6 +30,11 @@
       font-size: 16px;
       margin-bottom: 18px;
       background: white;
+      outline: none;
+      transition: border-color 0.3s;
+    }
+    .search:focus {
+      border-color: #087f70;
     }
     h2 { font-size: 20px; margin: 22px 0 14px; }
     .categories {
@@ -45,6 +50,17 @@
       cursor: pointer;
       border: 1px solid #e2eaf0;
       font-size: 14px;
+      transition: all 0.2s ease;
+      user-select: none;
+    }
+    .category:hover {
+      border-color: #087f70;
+      transform: translateY(-2px);
+    }
+    .category.active {
+      background: #087f70;
+      color: white;
+      border-color: #087f70;
     }
     .category span { display: block; font-size: 27px; margin-bottom: 7px; }
     .cards { display: grid; gap: 12px; }
@@ -53,6 +69,7 @@
       border-radius: 14px;
       padding: 17px;
       border: 1px solid #e1e9ef;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.02);
     }
     .card h3 { margin: 0 0 9px; color: #087f70; }
     .card p { margin: 7px 0; color: #526475; font-size: 14px; }
@@ -73,8 +90,14 @@
       padding: 10px 18px;
       border-radius: 9px;
       margin-top: 10px;
+      font-weight: bold;
+      font-size: 14px;
+      transition: background 0.2s;
     }
-    .empty { text-align: center; padding: 25px; color: #687987; }
+    .call:hover {
+      background: #066358;
+    }
+    .empty { text-align: center; padding: 25px; color: #687987; background: white; border-radius: 14px; }
     footer {
       text-align: center;
       color: #73818c;
@@ -116,29 +139,42 @@
 <footer>خدمات أولاد عليو © <span id="year"></span></footer>
 
 <script>
-  // أضف بيانات الخدمات الحقيقية هنا لاحقًا.
-  // اترك رقم الهاتف فارغًا إذا لم يتوفر.
+  // بيانات تجريبية للخدمات - يمكنك تعديلها أو إضافة المزيد بسهولة
   const services = [
     {
-      name: "مثال: صيدلية",
+      name: "دكتور / أسامة (باطنة وعيادة شاملة)",
+      category: "أطباء ومستشفيات",
+      address: "شارع البحر الرئيسي",
+      phone: "01000000000",
+      hours: "من 5 مساءً إلى 9 مساءً"
+    },
+    {
+      name: "صيدلية الإخلاص",
       category: "صيدليات",
-      address: "اكتب العنوان هنا",
-      phone: "",
-      hours: "اكتب مواعيد العمل هنا"
+      address: "بجوار الموقف القديم",
+      phone: "01200000000",
+      hours: "متاحة 24 ساعة (خدمة توصيل)"
     },
     {
-      name: "مثال: محل تجاري",
+      name: "معامل الشفاء للتحاليل الطبية",
+      category: "تحاليل وأشعة",
+      address: "الشارع التجاري",
+      phone: "01100000000",
+      hours: "من 9 صباحاً إلى 10 مساءً"
+    },
+    {
+      name: "سوبر ماركت الخير",
       category: "محلات",
-      address: "اكتب العنوان هنا",
-      phone: "",
-      hours: "اكتب مواعيد العمل هنا"
+      address: "مدخل البلد",
+      phone: "01500000000",
+      hours: "يومياً من 8 صباحاً لـ 12 منتصف الليل"
     },
     {
-      name: "مثال: فني صيانة",
+      name: "أحمد - أعمال صيانة وسباكة",
       category: "صيانة وحرف",
-      address: "اكتب العنوان هنا",
-      phone: "",
-      hours: "بالاتفاق"
+      address: "أولاد عليو",
+      phone: "01011111111",
+      hours: "بالاتفاق المسبق"
     }
   ];
 
@@ -209,7 +245,17 @@
   document.querySelectorAll(".category").forEach(button => {
     button.addEventListener("click", () => {
       const category = button.dataset.category;
-      selectedCategory = selectedCategory === category ? "" : category;
+      
+      // تبديل اختيار القسم وإضافة كلاس التحديد البصري
+      if (selectedCategory === category) {
+        selectedCategory = "";
+        button.classList.remove("active");
+      } else {
+        document.querySelectorAll(".category").forEach(btn => btn.classList.remove("active"));
+        selectedCategory = category;
+        button.classList.add("active");
+      }
+
       listTitle.textContent = selectedCategory
         ? "الخدمات: " + selectedCategory
         : "⭐ الخدمات";
