@@ -41,7 +41,6 @@
         .category:hover { border-color: #087f70; transform: translateY(-2px); }
         .category span { display: block; font-size: 30px; margin-bottom: 8px; }
         
-        /* شاشات الأقسام الفرعية */
         .sub-page { display: none; }
         .sub-page.active { display: block; }
         
@@ -78,8 +77,7 @@
     </header>
 
     <main class="container">
-        
-        <!-- الصفحة الرئيسية (الأقسام) -->
+        <!-- الصفحة الرئيسية -->
         <div id="homeView">
             <input id="search" class="search" type="search" placeholder="🔎 ابحث عن طبيب أو صيدلية أو محل...">
             
@@ -99,19 +97,17 @@
             <div id="allServices" class="cards"></div>
         </div>
 
-        <!-- صفحة القسم الفرعي (تفتح عند الضغط على أي خانة) -->
+        <!-- صفحة القسم الفرعي -->
         <div id="categoryView" class="sub-page">
             <button class="back-btn" onclick="goHome()">⬅ العودة للرئيسية</button>
             <h2 id="categoryTitle" style="color: #087f70; margin-bottom: 15px;"></h2>
             <div id="categoryServices" class="cards"></div>
         </div>
-
     </main>
 
     <footer>خدمات أولاد عليو © <span id="year"></span></footer>
 
     <script>
-        // قاعدة البيانات (تقدر تضيف وتزود براحتك)
         const services = [
             { name: "دكتور / أسامة (باطنة وعيادة شاملة)", category: "أطباء ومستشفيات", address: "شارع البحر الرئيسي", phone: "01000000000", hours: "من 5 مساءً إلى 9 مساءً" },
             { name: "صيدلية الإخلاص", category: "صيدليات", address: "بجوار الموقف القديم", phone: "01200000000", hours: "متاحة 24 ساعة (خدمة توصيل)" },
@@ -127,7 +123,6 @@
         const allServicesBox = document.getElementById("allServices");
         const searchInput = document.getElementById("search");
 
-        // عرض كل الخدمات في الرئيسية
         function renderAllServices(filterText = "") {
             allServicesBox.innerHTML = "";
             const filtered = services.filter(s => 
@@ -146,7 +141,6 @@
             });
         }
 
-        // فتح صفحة القسم المحدد
         function openCategory(catName) {
             homeView.style.display = "none";
             categoryView.classList.add("active");
@@ -167,14 +161,12 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        // العودة للرئيسية
         function goHome() {
             categoryView.classList.remove("active");
             homeView.style.display = "block";
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        // تصميم كارت الخدمة
         function createCard(service) {
             const card = document.createElement("article");
             card.className = "card";
