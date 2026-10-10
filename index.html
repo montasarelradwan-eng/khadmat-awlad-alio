@@ -13,64 +13,75 @@
         
         .brand-logo { 
             display: inline-flex; align-items: center; justify-content: center; 
-            width: 75px; height: 75px; border: 3px solid rgba(255, 255, 255, 0.85); 
-            border-radius: 50%; font-size: 28px; color: #ffffff; 
-            background: rgba(255, 255, 255, 0.1); 
+            width: 85px; height: 85px; border: 3px solid rgba(255, 255, 255, 0.85); 
+            border-radius: 50%; 
+            background: white; /* خلفية بيضاء دائرية للشعار */
             box-shadow: inset 0 0 10px rgba(255,255,255,0.2), 0 4px 8px rgba(0,0,0,0.15);
-            margin-bottom: 12px;
+            margin-bottom: 15px;
+            overflow: hidden; /* لضمان بقاء الصورة داخل الدائرة */
         }
 
-        header h1 { margin: 0 0 5px; font-size: 26px; }
-        header p { margin: 0 0 12px; font-size: 14px; opacity: 0.9; }
+        .brand-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* لملء الدائرة بالصورة دون تشويه */
+        }
+
+        header h1 { margin: 0 0 5px; font-size: 28px; font-weight: bold; }
+        header p { margin: 0 0 15px; font-size: 15px; opacity: 0.9; }
         
         .dev-badge { 
             display: inline-block; background: rgba(255, 255, 255, 0.18); 
-            padding: 5px 14px; border-radius: 20px; font-size: 12px; font-weight: bold; 
-            margin-top: 6px; direction: ltr; border: 1px solid rgba(255, 255, 255, 0.25);
+            padding: 6px 16px; border-radius: 20px; font-size: 13px; font-weight: bold; 
+            margin-top: 10px; direction: ltr; border: 1px solid rgba(255, 255, 255, 0.25);
         }
 
-        .container { max-width: 850px; margin: auto; padding: 18px; }
+        .container { max-width: 850px; margin: auto; padding: 20px; }
         
-        .search { width: 100%; padding: 15px; border: 1px solid #d6e0e8; border-radius: 12px; font-size: 16px; margin-bottom: 18px; background: white; outline: none; transition: border-color 0.3s; }
+        .search { width: 100%; padding: 16px; border: 1px solid #d6e0e8; border-radius: 14px; font-size: 17px; margin-bottom: 20px; background: white; outline: none; transition: border-color 0.3s; box-shadow: 0 2px 5px rgba(0,0,0,0.03); }
         .search:focus { border-color: #087f70; }
         
-        h2 { font-size: 20px; margin: 22px 0 14px; }
+        h2 { font-size: 22px; margin: 25px 0 15px; color: #075b70; }
         
-        .categories { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
-        .category { background: white; padding: 22px 10px; text-align: center; border-radius: 14px; cursor: pointer; border: 1px solid #e2eaf0; font-size: 15px; font-weight: bold; transition: all 0.2s ease; user-select: none; box-shadow: 0 2px 5px rgba(0,0,0,0.02); }
-        .category:hover { border-color: #087f70; transform: translateY(-2px); box-shadow: 0 4px 10px rgba(8,127,112,0.1); }
-        .category span { display: block; font-size: 32px; margin-bottom: 8px; }
+        .categories { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; }
+        .category { background: white; padding: 25px 15px; text-align: center; border-radius: 16px; cursor: pointer; border: 1px solid #e2eaf0; font-size: 16px; font-weight: bold; transition: all 0.2s ease; user-select: none; box-shadow: 0 3px 6px rgba(0,0,0,0.03); }
+        .category:hover { border-color: #087f70; transform: translateY(-3px); box-shadow: 0 6px 12px rgba(8,127,112,0.1); }
+        .category span { display: block; font-size: 36px; margin-bottom: 10px; }
         
         .sub-page { display: none; }
         .sub-page.active { display: block; }
         
         .back-btn { 
-            display: inline-flex; align-items: center; gap: 5px; 
+            display: inline-flex; align-items: center; gap: 8px; 
             background: #087f70; color: white; border: none; 
-            padding: 10px 18px; border-radius: 10px; font-size: 15px; 
-            cursor: pointer; margin-bottom: 15px; font-weight: bold; 
-            transition: background 0.2s;
+            padding: 12px 20px; border-radius: 12px; font-size: 16px; 
+            cursor: pointer; margin-bottom: 20px; font-weight: bold; 
+            transition: background 0.2s; box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
         .back-btn:hover { background: #066358; }
 
-        .cards { display: grid; gap: 12px; }
-        .card { background: white; border-radius: 14px; padding: 17px; border: 1px solid #e1e9ef; box-shadow: 0 2px 5px rgba(0,0,0,0.02); }
-        .card h3 { margin: 0 0 9px; color: #087f70; }
-        .card p { margin: 7px 0; color: #526475; font-size: 14px; }
-        .badge { display: inline-block; background: #e2f5ef; color: #087f70; padding: 5px 9px; border-radius: 7px; font-size: 12px; margin-bottom: 10px; }
+        .cards { display: grid; gap: 15px; }
+        .card { background: white; border-radius: 16px; padding: 20px; border: 1px solid #e1e9ef; box-shadow: 0 3px 6px rgba(0,0,0,0.03); }
+        .card h3 { margin: 0 0 10px; color: #087f70; font-size: 19px; }
+        .card p { margin: 8px 0; color: #526475; font-size: 15px; line-height: 1.5; }
+        .badge { display: inline-block; background: #e2f5ef; color: #087f70; padding: 6px 12px; border-radius: 8px; font-size: 13px; font-weight: bold; margin-bottom: 12px; }
         
-        .call { display: inline-block; background: #087f70; color: white; text-decoration: none; padding: 10px 18px; border-radius: 9px; margin-top: 10px; font-weight: bold; font-size: 14px; transition: background 0.2s; }
+        .call { display: inline-block; background: #087f70; color: white; text-decoration: none; padding: 12px 22px; border-radius: 10px; margin-top: 12px; font-weight: bold; font-size: 15px; transition: background 0.2s; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
         .call:hover { background: #066358; }
         
-        .empty { text-align: center; padding: 30px; color: #687987; background: white; border-radius: 14px; font-size: 15px; }
+        .empty { text-align: center; padding: 40px; color: #687987; background: white; border-radius: 16px; font-size: 16px; border: 1px solid #e1e9ef; }
         
-        footer { text-align: center; color: #73818c; font-size: 13px; padding: 25px 10px; }
+        footer { text-align: center; color: #73818c; font-size: 14px; padding: 30px 15px; border-top: 1px solid #e1e9ef; background: #f9fbfe; margin-top: 30px; }
+        
         @media (max-width: 420px) { .categories { grid-template-columns: repeat(2, 1fr); } }
     </style>
 </head>
 <body>
     <header>
-        <div class="brand-logo">🏡</div>
+        <!-- استبدال الإيموجي بصورة الشعار (Logo) -->
+        <div class="brand-logo">
+            <img src="./logo.png" alt="شعار أولاد عليو">
+        </div>
         <h1>خدمات أولاد عليو</h1>
         <p>دليلك للوصول إلى الخدمات والمحلات في بلدك</p>
         <div class="dev-badge">Developed by: Eng. Montaser Mahmoud El-Radwan</div>
@@ -97,7 +108,7 @@
         <!-- صفحة عرض نتائج البحث أو القسم الفرعي -->
         <div id="categoryView" class="sub-page">
             <button class="back-btn" onclick="goHome()">⬅ العودة للرئيسية</button>
-            <h2 id="categoryTitle" style="color: #087f70; margin-bottom: 15px;"></h2>
+            <h2 id="categoryTitle" style="color: #087f70; margin-bottom: 20px;"></h2>
             <div id="categoryServices" class="cards"></div>
         </div>
     </main>
@@ -106,112 +117,5 @@
 
     <script>
         const services = [
-            { name: "دكتور / أسامة (باطنة وعيادة شاملة)", category: "أطباء ومستشفيات", address: "شارع البحر الرئيسي", phone: "01000000000", hours: "من 5 مساءً إلى 9 مساءً" },
-            { name: "صيدلية الإخلاص", category: "صيدليات", address: "بجوار الموقف القديم", phone: "01200000000", hours: "متاحة 24 ساعة (خدمة توصيل)" },
-            { name: "معامل الشفاء للتحاليل الطبية", category: "تحاليل وأشعة", address: "الشارع التجاري", phone: "01100000000", hours: "من 9 صباحاً إلى 10 مساءً" },
-            { name: "سوبر ماركت الخير", category: "محلات", address: "مدخل البلد", phone: "01500000000", hours: "يومياً من 8 صباحاً لـ 12 منتصف الليل" },
-            { name: "أحمد - أعمال صيانة وسباكة", category: "صيانة وحرف", address: "أولاد عليو", phone: "01011111111", hours: "بالاتفاق المسبق" }
-        ];
-
-        const homeView = document.getElementById("homeView");
-        const categoryView = document.getElementById("categoryView");
-        const categoryTitle = document.getElementById("categoryTitle");
-        const categoryServices = document.getElementById("categoryServices");
-        const searchInput = document.getElementById("search");
-
-        // فتح قسم معين
-        function openCategory(catName) {
-            homeView.style.display = "none";
-            categoryView.classList.add("active");
-            categoryTitle.textContent = "📁 قسم: " + catName;
-            
-            categoryServices.innerHTML = "";
-            const matched = services.filter(s => s.category === catName);
-
-            if (!matched.length) {
-                categoryServices.innerHTML = '<div class="empty">لا توجد خدمات مسجلة في هذا القسم حالياً. انتظرونا قريباً!</div>';
-                return;
-            }
-
-            matched.forEach(service => {
-                categoryServices.appendChild(createCard(service));
-            });
-            
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-
-        // البحث السريع يفتح صفحة النتائج تلقائياً
-        searchInput.addEventListener("input", (e) => {
-            const query = e.target.value.trim().toLowerCase();
-            if (!query) {
-                goHome();
-                return;
-            }
-
-            homeView.style.display = "none";
-            categoryView.classList.add("active");
-            categoryTitle.textContent = "🔍 نتائج البحث عن: " + e.target.value;
-            
-            categoryServices.innerHTML = "";
-            const filtered = services.filter(s => 
-                s.name.toLowerCase().includes(query) || 
-                s.category.toLowerCase().includes(query) || 
-                s.address.toLowerCase().includes(query)
-            );
-
-            if (!filtered.length) {
-                categoryServices.innerHTML = '<div class="empty">لا توجد نتائج مطابقة لبحثك.</div>';
-                return;
-            }
-
-            filtered.forEach(service => {
-                categoryServices.appendChild(createCard(service));
-            });
-        });
-
-        function goHome() {
-            categoryView.classList.remove("active");
-            homeView.style.display = "block";
-            searchInput.value = "";
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-
-        function createCard(service) {
-            const card = document.createElement("article");
-            card.className = "card";
-            
-            const title = document.createElement("h3");
-            title.textContent = service.name;
-            card.appendChild(title);
-
-            const badge = document.createElement("div");
-            badge.className = "badge";
-            badge.textContent = service.category;
-            card.appendChild(badge);
-
-            const address = document.createElement("p");
-            address.textContent = "📍 العنوان: " + service.address;
-            card.appendChild(address);
-
-            const hours = document.createElement("p");
-            hours.textContent = "🕒 المواعيد: " + service.hours;
-            card.appendChild(hours);
-
-            if (service.phone) {
-                const phone = document.createElement("p");
-                phone.textContent = "📞 " + service.phone;
-                card.appendChild(phone);
-
-                const call = document.createElement("a");
-                call.className = "call";
-                call.href = "tel:" + service.phone;
-                call.textContent = "اتصل الآن";
-                card.appendChild(call);
-            }
-            return card;
-        }
-
-        document.getElementById("year").textContent = new Date().getFullYear();
-    </script>
-</body>
-</html>
+            { name: "دكتور / أسامة (باطنة وعيادة شاملة)", category: "أطباء ومست
+                
