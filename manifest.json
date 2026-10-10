@@ -3,14 +3,14 @@
   "short_name": "أولاد عليو",
   "start_url": "./index.html",
   "display": "standalone",
-  "background_color": "#f3f6fa",
+  "background_color": "#075b70",
   "theme_color": "#087f70",
-  "description": "دليلك للوصول إلى الخدمات والمحلات في بلدك أولاد عليو",
   "icons": [
     {
-      "src": "https://img.icons8.com/color/512/home.png",
+      "src": "./icon.png",
       "sizes": "512x512",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any maskable"
     }
   ]
 }
