@@ -8,143 +8,82 @@
     <style>
         * { box-sizing: border-box; }
         body { margin: 0; font-family: Tahoma, Arial, sans-serif; background: #f3f6fa; color: #183047; }
-        
         header { background: linear-gradient(135deg, #087f70, #075b70); color: white; text-align: center; padding: 35px 15px 25px; border-radius: 0 0 25px 25px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
-        
-        .brand-logo { 
-            display: inline-flex; align-items: center; justify-content: center; 
-            width: 85px; height: 85px; border: 3px solid rgba(255, 255, 255, 0.85); 
-            border-radius: 50%; 
-            background: white; /* خلفية بيضاء دائرية للشعار */
-            box-shadow: inset 0 0 10px rgba(255,255,255,0.2), 0 4px 8px rgba(0,0,0,0.15);
-            margin-bottom: 15px;
-            overflow: hidden; /* لضمان بقاء الصورة داخل الدائرة */
-        }
-
-        .brand-logo img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover; /* لملء الدائرة بالصورة دون تشويه */
-        }
-
+        .brand-logo { display: inline-flex; align-items: center; justify-content: center; width: 85px; height: 85px; border: 3px solid rgba(255,255,255,0.85); border-radius: 50%; background: white; box-shadow: inset 0 0 10px rgba(255,255,255,0.2), 0 4px 8px rgba(0,0,0,0.15); margin-bottom: 15px; overflow: hidden; }
+        .brand-logo img { width: 100%; height: 100%; object-fit: cover; }
         header h1 { margin: 0 0 5px; font-size: 28px; font-weight: bold; }
         header p { margin: 0 0 15px; font-size: 15px; opacity: 0.9; }
-        
-        .dev-badge { 
-            display: inline-block; background: rgba(255, 255, 255, 0.18); 
-            padding: 6px 16px; border-radius: 20px; font-size: 13px; font-weight: bold; 
-            margin-top: 10px; direction: ltr; border: 1px solid rgba(255, 255, 255, 0.25);
-        }
-
-        .container { max-width: 850px; margin: auto; padding: 20px; }
-        
-        .search { width: 100%; padding: 16px; border: 1px solid #d6e0e8; border-radius: 14px; font-size: 17px; margin-bottom: 20px; background: white; outline: none; transition: border-color 0.3s; box-shadow: 0 2px 5px rgba(0,0,0,0.03); }
-        .search:focus { border-color: #087f70; }
-        
-        h2 { font-size: 22px; margin: 25px 0 15px; color: #075b70; }
-        
-        .categories { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; }
-        .category { background: white; padding: 25px 15px; text-align: center; border-radius: 16px; cursor: pointer; border: 1px solid #e2eaf0; font-size: 16px; font-weight: bold; transition: all 0.2s ease; user-select: none; box-shadow: 0 3px 6px rgba(0,0,0,0.03); }
-        .category:hover { border-color: #087f70; transform: translateY(-3px); box-shadow: 0 6px 12px rgba(8,127,112,0.1); }
-        .category span { display: block; font-size: 36px; margin-bottom: 10px; }
-        
-        .sub-page { display: none; }
-        .sub-page.active { display: block; }
-        
-        .back-btn { 
-            display: inline-flex; align-items: center; gap: 8px; 
-            background: #087f70; color: white; border: none; 
-            padding: 12px 20px; border-radius: 12px; font-size: 16px; 
-            cursor: pointer; margin-bottom: 20px; font-weight: bold; 
-            transition: background 0.2s; box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-        .back-btn:hover { background: #066358; }
-
-        .cards { display: grid; gap: 15px; }
-        .card { background: white; border-radius: 16px; padding: 20px; border: 1px solid #e1e9ef; box-shadow: 0 3px 6px rgba(0,0,0,0.03); }
-        .card h3 { margin: 0 0 10px; color: #087f70; font-size: 19px; }
-        .card p { margin: 8px 0; color: #526475; font-size: 15px; line-height: 1.5; }
-        .badge { display: inline-block; background: #e2f5ef; color: #087f70; padding: 6px 12px; border-radius: 8px; font-size: 13px; font-weight: bold; margin-bottom: 12px; }
-        
-        .call { display: inline-block; background: #087f70; color: white; text-decoration: none; padding: 12px 22px; border-radius: 10px; margin-top: 12px; font-weight: bold; font-size: 15px; transition: background 0.2s; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
-        .call:hover { background: #066358; }
-        
-        .empty { text-align: center; padding: 40px; color: #687987; background: white; border-radius: 16px; font-size: 16px; border: 1px solid #e1e9ef; }
-        
-        footer { text-align: center; color: #73818c; font-size: 14px; padding: 30px 15px; border-top: 1px solid #e1e9ef; background: #f9fbfe; margin-top: 30px; }
-        
-        @media (max-width: 420px) { .categories { grid-template-columns: repeat(2, 1fr); } }
+        .container { max-width: 600px; margin: 20px auto; padding: 0 15px; }
+        .search-box { width: 100%; padding: 12px 15px; font-size: 16px; border: 1px solid #ccc; border-radius: 8px; margin-bottom: 20px; outline: none; }
+        .card { background: white; padding: 15px; border-radius: 10px; margin-bottom: 12px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+        .card h3 { margin: 0 0 8px; color: #087f70; }
+        .card p { margin: 4px 0; font-size: 14px; color: #555; }
+        .call-btn { display: inline-block; margin-top: 8px; padding: 6px 12px; background: #28a745; color: white; text-decoration: none; border-radius: 5px; font-size: 13px; }
     </style>
 </head>
 <body>
+
     <header>
-        <!-- استبدال الإيموجي بصورة الشعار (Logo) -->
-        <div class="brand-logo">
-            <img src="./logo.png" alt="شعار أولاد عليو">
-        </div>
         <h1>خدمات أولاد عليو</h1>
-        <p>دليلك للوصول إلى الخدمات والمحلات في بلدك</p>
-        <div class="dev-badge">Developed by: Eng. Montaser Mahmoud El-Radwan</div>
+        <p>دليلك الشامل لخدمات وأطباء البلينا</p>
     </header>
 
-    <main class="container">
-        <!-- الصفحة الرئيسية (الأقسام فقط وبحث شامل) -->
-        <div id="homeView">
-            <input id="search" class="search" type="search" placeholder="🔎 ابحث عن طبيب أو صيدلية أو محل...">
-            
-            <h2>📋 أقسام الخدمات</h2>
-            <div class="categories">
-                <div class="category" onclick="openCategory('أطباء ومستشفيات')"><span>🏥</span>أطباء ومستشفيات</div>
-                <div class="category" onclick="openCategory('صيدليات')"><span>💊</span>صيدليات</div>
-                <div class="category" onclick="openCategory('تحاليل وأشعة')"><span>🧪</span>تحاليل وأشعة</div>
-                <div class="category" onclick="openCategory('محلات')"><span>🛒</span>محلات</div>
-                <div class="category" onclick="openCategory('صيانة وحرف')"><span>🔧</span>صيانة وحرف</div>
-                <div class="category" onclick="openCategory('مطاعم')"><span>🍽️</span>مطاعم</div>
-                <div class="category" onclick="openCategory('مواصلات')"><span>🚐</span>مواصلات</div>
-                <div class="category" onclick="openCategory('أخرى')"><span>📌</span>خدمات أخرى</div>
-            </div>
-        </div>
-
-        <!-- صفحة عرض نتائج البحث أو القسم الفرعي -->
-        <div id="categoryView" class="sub-page">
-            <button class="back-btn" onclick="goHome()">⬅ العودة للرئيسية</button>
-            <h2 id="categoryTitle" style="color: #087f70; margin-bottom: 20px;"></h2>
-            <div id="categoryServices" class="cards"></div>
-        </div>
-    </main>
-
-    <footer>خدمات أولاد عليو © <span id="year"></span></footer>
+    <div class="container">
+        <input type="text" id="search" class="search-box" placeholder="ابحث عن دكتور، خدمة، أو مستشفى..." onkeyup="filterServices()">
+        
+        <div id="services-list"></div>
+    </div>
 
     <script>
         const services = [
-            { name: "دكتور / أسامة (باطنة وعيادة شاملة)", category: "أطباء ومست
- <div class="doctors-section">
-    <h3>أبرز أطباء مركز البلينا</h3>
-    
-    <div class="doctor-card">
-        <h4>د. مينا بولس</h4>
-        <p>تخصص: أطفال وحديثي الولادة</p>
-        <p>العنوان: شارع الجمهورية - البلينا</p>
-        <a href="tel:01068531980" class="btn-call">اتصل الآن: 01068531980</a>
-    </div>
+            {
+                name: "د. مينا بولس",
+                category: "أطباء ومستشفيات",
+                details: "تخصص: أطفال وحديثي الولادة | العنوان: شارع الجمهورية - البلينا",
+                phone: "01068531980"
+            },
+            {
+                name: "عيادة البلينا العامة (د. يوسف عبد العظيم)",
+                category: "أطباء ومستشفيات",
+                details: "تخصص: نساء والتوليد | العنوان: شارع الجمهورية - أمام المستشفى العام",
+                phone: "01111812366"
+            },
+            {
+                name: "عيادة البلينا التخصصية",
+                category: "أطباء ومستشفيات",
+                details: "تخصص: باطنة وقلب | العنوان: شارع الجمهورية - بجوار المركز الحضري",
+                phone: "01220904632"
+            },
+            {
+                name: "مستشفى البلينا المركزي",
+                category: "أطباء ومستشفيات",
+                details: "تخصص: طوارئ واستقبال (24 ساعة)",
+                phone: "0934800301"
+            }
+        ];
 
-    <div class="doctor-card">
-        <h4>عيادة البلينا العامة (د. يوسف عبد العظيم)</h4>
-        <p>تخصص: نساء والتوليد</p>
-        <p>العنوان: شارع الجمهورية - أمام المستشفى العام</p>
-        <a href="tel:01111812366" class="btn-call">اتصل الآن: 01111812366</a>
-    </div>
+        function displayServices(list) {
+            const container = document.getElementById("services-list");
+            container.innerHTML = "";
+            list.forEach(s => {
+                container.innerHTML += `
+                    <div class="card">
+                        <h3>${s.name}</h3>
+                        <p><strong>القسم:</strong> ${s.category}</p>
+                        <p><strong>التفاصيل:</strong> ${s.details}</p>
+                        <a href="tel:${s.phone}" class="call-btn">📞 إتصال: ${s.phone}</a>
+                    </div>
+                `;
+            });
+        }
 
-    <div class="doctor-card">
-        <h4>عيادة البلينا التخصصية</h4>
-        <p>تخصص: باطنة وقلب</p>
-        <p>العنوان: شارع الجمهورية - بجوار المركز الحضري</p>
-        <a href="tel:01220904632" class="btn-call">اتصل الآن: 01220904632</a>
-    </div>
+        function filterServices() {
+            const query = document.getElementById("search").value.toLowerCase();
+            const filtered = services.filter(s => s.name.toLowerCase().includes(query) || s.category.toLowerCase().includes(query) || s.details.toLowerCase().includes(query));
+            displayServices(filtered);
+        }
 
-    <div class="doctor-card">
-        <h4>مستشفى البلينا المركزي</h4>
-        <p>تخصص: طوارئ واستقبال (24 ساعة)</p>
-        <a href="tel:0934800301" class="btn-call">اتصل الآن: 0934800301</a>
-    </div>
-</div>               
+        displayServices(services);
+    </script>
+</body>
+</html>
