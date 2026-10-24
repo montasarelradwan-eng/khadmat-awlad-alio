@@ -1,4 +1,231 @@
-<!DOCTYPE html>
+<!DOCTYPE html><!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>خدمات أولاد عليو</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Tahoma, Arial, sans-serif;
+      background: #f3f6fa;
+      color: #183047;
+    }
+    header {
+      background: linear-gradient(135deg, #087f70, #075b70);
+      color: white;
+      text-align: center;
+      padding: 32px 15px;
+      border-radius: 0 0 25px 25px;
+    }
+    header h1 { margin: 0 0 10px; font-size: 27px; }
+    header p { margin: 0; font-size: 15px; }
+    .container { max-width: 850px; margin: auto; padding: 18px; }
+    .search {
+      width: 100%;
+      padding: 15px;
+      border: 1px solid #d6e0e8;
+      border-radius: 12px;
+      font-size: 16px;
+      margin-bottom: 18px;
+      background: white;
+    }
+    h2 { font-size: 20px; margin: 22px 0 14px; }
+    .categories {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+    }
+    .category {
+      background: white;
+      padding: 16px 5px;
+      text-align: center;
+      border-radius: 13px;
+      cursor: pointer;
+      border: 1px solid #e2eaf0;
+      font-size: 14px;
+    }
+    .category span { display: block; font-size: 27px; margin-bottom: 7px; }
+    .cards { display: grid; gap: 12px; }
+    .card {
+      background: white;
+      border-radius: 14px;
+      padding: 17px;
+      border: 1px solid #e1e9ef;
+    }
+    .card h3 { margin: 0 0 9px; color: #087f70; }
+    .card p { margin: 7px 0; color: #526475; font-size: 14px; }
+    .badge {
+      display: inline-block;
+      background: #e2f5ef;
+      color: #087f70;
+      padding: 5px 9px;
+      border-radius: 7px;
+      font-size: 12px;
+      margin-bottom: 10px;
+    }
+    .call {
+      display: inline-block;
+      background: #087f70;
+      color: white;
+      text-decoration: none;
+      padding: 10px 18px;
+      border-radius: 9px;
+      margin-top: 10px;
+    }
+    .empty { text-align: center; padding: 25px; color: #687987; }
+    footer {
+      text-align: center;
+      color: #73818c;
+      font-size: 13px;
+      padding: 25px 10px;
+    }
+    @media (max-width: 420px) {
+      .categories { grid-template-columns: repeat(2, 1fr); }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>🏡 خدمات أولاد عليو</h1>
+  <p>دليلك للوصول إلى الخدمات والمحلات في بلدك</p>
+</header>
+
+<main class="container">
+  <input id="search" class="search" type="search"
+    placeholder="🔎 ابحث عن طبيب أو صيدلية أو محل...">
+
+  <h2>📋 أقسام الخدمات</h2>
+  <div class="categories">
+    <div class="category" data-category="أطباء ومستشفيات"><span>🏥</span>أطباء ومستشفيات</div>
+    <div class="category" data-category="صيدليات"><span>💊</span>صيدليات</div>
+    <div class="category" data-category="تحاليل وأشعة"><span>🧪</span>تحاليل وأشعة</div>
+    <div class="category" data-category="محلات"><span>🛒</span>محلات</div>
+    <div class="category" data-category="صيانة وحرف"><span>🔧</span>صيانة وحرف</div>
+    <div class="category" data-category="مطاعم"><span>🍽️</span>مطاعم</div>
+    <div class="category" data-category="مواصلات"><span>🚐</span>مواصلات</div>
+    <div class="category" data-category="أخرى"><span>📌</span>خدمات أخرى</div>
+  </div>
+
+  <h2 id="listTitle">⭐ الخدمات</h2>
+  <div id="services" class="cards"></div>
+</main>
+
+<footer>خدمات أولاد عليو © <span id="year"></span></footer>
+
+<script>
+  // أضف بيانات الخدمات الحقيقية هنا لاحقًا.
+  // اترك رقم الهاتف فارغًا إذا لم يتوفر.
+  const services = [
+    {
+      name: "مثال: صيدلية",
+      category: "صيدليات",
+      address: "اكتب العنوان هنا",
+      phone: "",
+      hours: "اكتب مواعيد العمل هنا"
+    },
+    {
+      name: "مثال: محل تجاري",
+      category: "محلات",
+      address: "اكتب العنوان هنا",
+      phone: "",
+      hours: "اكتب مواعيد العمل هنا"
+    },
+    {
+      name: "مثال: فني صيانة",
+      category: "صيانة وحرف",
+      address: "اكتب العنوان هنا",
+      phone: "",
+      hours: "بالاتفاق"
+    }
+  ];
+
+  const search = document.getElementById("search");
+  const servicesBox = document.getElementById("services");
+  const listTitle = document.getElementById("listTitle");
+  let selectedCategory = "";
+
+  function renderServices() {
+    const query = search.value.trim().toLowerCase();
+
+    const filtered = services.filter(service => {
+      const text = [
+        service.name, service.category, service.address
+      ].join(" ").toLowerCase();
+
+      return text.includes(query) &&
+        (!selectedCategory || service.category === selectedCategory);
+    });
+
+    servicesBox.innerHTML = "";
+
+    if (!filtered.length) {
+      servicesBox.innerHTML =
+        '<div class="empty">لا توجد خدمات مطابقة للبحث حاليًا.</div>';
+      return;
+    }
+
+    filtered.forEach(service => {
+      const card = document.createElement("article");
+      card.className = "card";
+
+      const title = document.createElement("h3");
+      title.textContent = service.name;
+      card.appendChild(title);
+
+      const badge = document.createElement("div");
+      badge.className = "badge";
+      badge.textContent = service.category;
+      card.appendChild(badge);
+
+      const address = document.createElement("p");
+      address.textContent = "📍 العنوان: " + service.address;
+      card.appendChild(address);
+
+      const hours = document.createElement("p");
+      hours.textContent = "🕒 المواعيد: " + service.hours;
+      card.appendChild(hours);
+
+      if (service.phone) {
+        const phone = document.createElement("p");
+        phone.textContent = "📞 " + service.phone;
+        card.appendChild(phone);
+
+        const call = document.createElement("a");
+        call.className = "call";
+        call.href = "tel:" + service.phone;
+        call.textContent = "اتصل الآن";
+        card.appendChild(call);
+      }
+
+      servicesBox.appendChild(card);
+    });
+  }
+
+  search.addEventListener("input", renderServices);
+
+  document.querySelectorAll(".category").forEach(button => {
+    button.addEventListener("click", () => {
+      const category = button.dataset.category;
+      selectedCategory = selectedCategory === category ? "" : category;
+      listTitle.textContent = selectedCategory
+        ? "الخدمات: " + selectedCategory
+        : "⭐ الخدمات";
+      renderServices();
+      document.getElementById("listTitle").scrollIntoView({
+        behavior: "smooth", block: "start"
+      });
+    });
+  });
+
+  document.getElementById("year").textContent = new Date().getFullYear();
+  renderServices();
+</script>
+
+</body>
+</html>
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
